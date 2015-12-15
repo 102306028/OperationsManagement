@@ -92,11 +92,11 @@ const AuthStore = assign({}, EventEmitter.prototype, {
     var ans = (Math.round(result*size)/size)*100;
     if(ans<0 || ans>100){
       return("建議方案：買一送一");
-    }else if (ans==null || ans==NaN) {
-      return("資料有誤，請重新輸入")
+    }else if (0 <= ans && ans<= 100) {
+      return("建議方案：降價" + ans + "%");
     }
     else {
-      return("建議方案：降價" + ans + "%");
+      return("資料有誤，請重新輸入");
     }
   },
 

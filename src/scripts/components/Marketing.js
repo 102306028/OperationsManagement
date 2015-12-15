@@ -47,13 +47,22 @@ const Marketing = React.createClass({
     });
   },
   _onDiscountSubmit(){
-    AuthActions.discount(this.state.sold,this.state.left);
+      AuthActions.discount(this.state.sold,this.state.left);
     this.togglePopup();
   },
   togglePopup() {
+    if(!this.state.showLoginPopup){
       this.setState({
         showLoginPopup: !this.state.showLoginPopup,
       });
+    }
+    },
+    toggleClose(){
+      if(this.state.showLoginPopup){
+        this.setState({
+          showLoginPopup: !this.state.showLoginPopup,
+        });
+      }
     },
 
 
@@ -70,8 +79,8 @@ const Marketing = React.createClass({
           剩餘數量<input onChange={this._onLeftChange} value={this.state.left}></input>個甜甜圈
         </p>
         <p>
-          <button type="button"  onClick={this._onDiscountSubmit}>{this.state.showLoginPopup ? 'close' :'查看建議行銷策略'}</button>
-          <MarketingResultPopup show={this.state.showLoginPopup} />
+          <button type="button" onClick={this._onDiscountSubmit}>查看建議行銷策略</button>
+          <MarketingResultPopup toggleClose={this.toggleClose} show={this.state.showLoginPopup} />
         </p>
         </div>
       </div>

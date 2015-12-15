@@ -53,9 +53,9 @@ const MarketingResultPopup =React.createClass({
 
   render() {
     return(
-
       <div style={[styles.wrap, (this.props.show ? styles.wrapShow : null)]}>
         <h1>{this.state.result}</h1>
+        <button onClick={this.props.toggleClose}>close</button>
       </div>
     )
   }
